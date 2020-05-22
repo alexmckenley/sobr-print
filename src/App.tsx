@@ -27,7 +27,7 @@ function print(text: string): Promise<PrintJob> {
     date: Date.now(),
   };
 
-  const preparedText = "\n\n\n" + text;
+  const preparedText = "\n" + text;
   return fetch("https://sobr.co:8888/", {
     method: "POST",
     body: preparedText,
