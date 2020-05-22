@@ -49,7 +49,7 @@ function App() {
   const textareaNodeRef = React.useRef<HTMLTextAreaElement>(null);
 
   const pollStatus = React.useCallback(() => {
-    fetch("http://sobr.co:8888/", { method: "GET" })
+    fetch("https://sobr.co:8888/", { method: "GET" })
       .then((response) => {
         if (response.status === 200) {
           setIsPrinterOnline(true);
@@ -121,6 +121,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1 className="App-heading">print.sobr.co</h1>
       <img
         src={logo}
         className={"App-logo " + (isPrinterOnline ? "" : "App-logo-monochrome")}
