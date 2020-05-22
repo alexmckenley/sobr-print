@@ -145,8 +145,8 @@ function App() {
             disabled={!isPrinterOnline}
             type="submit"
             className={
-              "App-form-button button button-primary " +
-              (isPrinterOnline ? "" : "disabled")
+              "App-form-button button " +
+              (isPrinterOnline ? "button-primary" : "disabled")
             }
             value="Print"
           />
