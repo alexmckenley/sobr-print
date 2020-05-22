@@ -49,7 +49,6 @@ function App() {
   const textareaNodeRef = React.useRef<HTMLTextAreaElement>(null);
 
   const pollStatus = React.useCallback(() => {
-    try {
     fetch("http://sobr.co:8888/", { method: "GET" })
       .then((response) => {
         if (response.status === 200) {
@@ -58,13 +57,13 @@ function App() {
           setIsPrinterOnline(false);
         }
       })
-      .catch(() => setIsPrinterOnline(false));
-    } catch (err) {
-      // Downgrade to HTTP if HTTPS is being used since printer does not support SSL
-      if (window.location.href.indexOf('https://') !== -1) {
-        window.location.href = process.env.PUBLIC_URL;
-      }
-    }
+      .catch(() => {
+        setIsPrinterOnline(false);
+        // Downgrade to HTTP if HTTPS is being used since printer does not support SSL
+        if (window.location.href.indexOf("https://") !== -1) {
+          window.location.href = process.env.PUBLIC_URL;
+        }
+      });
   }, []);
 
   React.useEffect(() => {
