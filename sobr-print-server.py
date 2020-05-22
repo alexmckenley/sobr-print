@@ -9,6 +9,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 from systemd.journal import JournaldLogHandler
 import logging
 import json
+import ssl
 
 # get an instance of the logger object this module will use
 logger = logger = logging.getLogger(__name__)
@@ -59,6 +60,9 @@ class S(BaseHTTPRequestHandler):
 def run(server_class=HTTPServer, handler_class=S, port=8888):
     server_address = ('', port)
     httpd = server_class(server_address, handler_class)
+    httpd.socket = ssl.wrap_socket (httpd.socket,
+        keyfile="/home/pi/letsencrypt/live/sobr.co/privkey.pem",
+        certfile='/home/pi/letsencrypt/live/sobr.co/fullchain.pem', server_side=True)
     logger.info('Starting httpd...\n')
     try:
         httpd.serve_forever()

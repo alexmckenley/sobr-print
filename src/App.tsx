@@ -28,7 +28,7 @@ function print(text: string): Promise<PrintJob> {
   };
 
   const preparedText = "\n\n\n" + text;
-  return fetch("http://sobr.co:8888/", {
+  return fetch("https://sobr.co:8888/", {
     method: "POST",
     body: preparedText,
   }).then((response) => {
@@ -57,13 +57,7 @@ function App() {
           setIsPrinterOnline(false);
         }
       })
-      .catch(() => {
-        setIsPrinterOnline(false);
-        // Downgrade to HTTP if HTTPS is being used since printer does not support SSL
-        if (window.location.href.indexOf("https://") !== -1) {
-          window.location.href = process.env.PUBLIC_URL;
-        }
-      });
+      .catch(() => setIsPrinterOnline(false));
   }, []);
 
   React.useEffect(() => {
@@ -133,9 +127,6 @@ function App() {
         alt="logo"
       />
 
-      {/* {isPrinterOnline ? null : (
-        <div>Printer offline, attempting to connect...</div>
-      )} */}
       <form className="App-form" onSubmit={onSubmit}>
         <label className="App-hidden" htmlFor="text">
           Text to print:
