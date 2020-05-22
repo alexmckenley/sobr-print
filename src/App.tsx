@@ -111,7 +111,6 @@ function App() {
           setPrintHistory([job, ...printHistory]);
           if (node != null) {
             node.value = "";
-            node.focus();
           }
         })
         .catch(() => {
