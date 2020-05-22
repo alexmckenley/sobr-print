@@ -29,6 +29,10 @@
   margin: 0 1rem;
 }
 
+.App-status {
+  margin-bottom: 1rem;
+}
+
 .App-text {
   width: 100%;
   resize: none;

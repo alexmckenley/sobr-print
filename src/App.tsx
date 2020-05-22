@@ -128,6 +128,10 @@ function App() {
         alt="logo"
       />
 
+      <div className="App-status">
+        {isPrinterOnline ? "(ready to print)" : "(printer offline)"}
+      </div>
+
       <form className="App-form" onSubmit={onSubmit}>
         <label className="App-hidden" htmlFor="text">
           Text to print:
