@@ -55,7 +55,7 @@ class S(BaseHTTPRequestHandler):
         self._set_response()
         self.wfile.write(json.dumps(True).encode('utf-8'))
         print_text(text)
-        print_text("\n\n\n")
+        print_text("\n\n")
 
 def run(server_class=HTTPServer, handler_class=S, port=8888):
     server_address = ('', port)
