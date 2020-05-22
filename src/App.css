@@ -1,38 +1,78 @@
 .App {
-  text-align: center;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  height: 10rem;
+  width: 10rem;
+  margin-bottom: 2rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.App-logo-monochrome {
+  filter: grayscale(100%);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.App-form {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  width: 31.5rem;
+  margin-bottom: 0;
 }
 
-.App-link {
-  color: #61dafb;
+.App-form-button {
+  margin: 0 1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App-text {
+  width: 100%;
+  resize: none;
+  min-height: 300px;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.App-hidden {
+  display: none;
+}
+
+.App-clearHistory {
+  margin-bottom: 1rem;
+}
+
+.App-history {
+  margin-top: 2rem;
+  width: 31.5rem;
+  margin-bottom: 1rem;
+}
+
+.App-li {
+  list-style: none;
+}
+
+.App-job {
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+.App-job-date {
+  color: grey;
+  white-space: nowrap;
+}
+
+.App-job-text {
+  margin-right: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
