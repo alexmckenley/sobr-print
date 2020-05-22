@@ -121,7 +121,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1 className="App-heading">print.sobr</h1>
+      <h1 className="App-heading">print.sobr.co</h1>
       <img
         src={logo}
         className={"App-logo " + (isPrinterOnline ? "" : "App-logo-monochrome")}
