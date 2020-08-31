@@ -60,6 +60,9 @@ class S(BaseHTTPRequestHandler):
 def run(server_class=HTTPServer, handler_class=S, port=8888):
     server_address = ('', port)
     httpd = server_class(server_address, handler_class)
+    # to renew certs:
+    # $ sudo certbot certonly --standalone -d "sobr.co"
+    # $ sudo scp -r /etc/letsencrypt pi@192.168.68.118:/home/pi
     httpd.socket = ssl.wrap_socket (httpd.socket,
         keyfile="/home/pi/letsencrypt/live/sobr.co/privkey.pem",
         certfile='/home/pi/letsencrypt/live/sobr.co/fullchain.pem', server_side=True)
