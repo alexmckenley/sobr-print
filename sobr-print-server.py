@@ -57,12 +57,10 @@ class S(BaseHTTPRequestHandler):
         print_text(text)
         print_text("\n\n")
 
-def run(server_class=HTTPServer, handler_class=S, port=8888):
+def run(server_class=HTTPServer, handler_class=S, port=8443):
     server_address = ('', port)
     httpd = server_class(server_address, handler_class)
-    # to renew certs:
-    # $ sudo certbot certonly --standalone -d "sobr.co"
-    # $ sudo scp -r /etc/letsencrypt pi@192.168.68.118:/home/pi
+    # certs provided by cloudflare:
     httpd.socket = ssl.wrap_socket (httpd.socket,
         keyfile="/home/pi/letsencrypt/live/sobr.co/privkey.pem",
         certfile='/home/pi/letsencrypt/live/sobr.co/fullchain.pem', server_side=True)

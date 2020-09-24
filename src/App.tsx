@@ -11,6 +11,8 @@ type PrintJob = {
   date: number;
 };
 
+const PRINTER_URI = "https://sobr.co:8443/";
+
 function uuidv4(): string {
   return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
     // eslint-disable-next-line
@@ -28,8 +30,9 @@ function print(text: string): Promise<PrintJob> {
   };
 
   const preparedText = "\n" + text;
-  return fetch("https://sobr.co:8888/", {
+  return fetch(PRINTER_URI, {
     method: "POST",
+    mode: "no-cors",
     body: preparedText,
   }).then((response) => {
     if (response.status === 200) {
@@ -49,7 +52,7 @@ function App() {
   const textareaNodeRef = React.useRef<HTMLTextAreaElement>(null);
 
   const pollStatus = React.useCallback(() => {
-    fetch("https://sobr.co:8888/", { method: "GET" })
+    fetch(PRINTER_URI, { method: "GET", mode: "no-cors" })
       .then((response) => {
         if (response.status === 200) {
           setIsPrinterOnline(true);
