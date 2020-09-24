@@ -32,7 +32,6 @@ function print(text: string): Promise<PrintJob> {
   const preparedText = "\n" + text;
   return fetch(PRINTER_URI, {
     method: "POST",
-    mode: "no-cors",
     body: preparedText,
   }).then((response) => {
     if (response.status === 200) {
@@ -52,7 +51,7 @@ function App() {
   const textareaNodeRef = React.useRef<HTMLTextAreaElement>(null);
 
   const pollStatus = React.useCallback(() => {
-    fetch(PRINTER_URI, { method: "GET", mode: "no-cors" })
+    fetch(PRINTER_URI, { method: "GET" })
       .then((response) => {
         if (response.status === 200) {
           setIsPrinterOnline(true);
