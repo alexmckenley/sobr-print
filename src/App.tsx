@@ -11,7 +11,7 @@ type PrintJob = {
   date: number;
 };
 
-const PRINTER_URI = "https://sobr.co:8443/";
+const PRINTER_URI = "https://sobr.co:2087/";
 
 function uuidv4(): string {
   return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {

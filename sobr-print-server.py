@@ -57,7 +57,7 @@ class S(BaseHTTPRequestHandler):
         print_text(text)
         print_text("\n\n")
 
-def run(server_class=HTTPServer, handler_class=S, port=8443):
+def run(server_class=HTTPServer, handler_class=S, port=2087):
     server_address = ('', port)
     httpd = server_class(server_address, handler_class)
     # certs provided by cloudflare:
