@@ -1,0 +1,11 @@
+[Unit]
+Description=sobr print server
+
+[Service]
+Type=simple
+User=root
+ExecStart=python3 /home/pi/sobr-print/sobr-print-server.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
