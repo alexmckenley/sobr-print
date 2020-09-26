@@ -57,13 +57,13 @@ class S(BaseHTTPRequestHandler):
         print_text(text)
         print_text("\n\n")
 
-def run(server_class=HTTPServer, handler_class=S, port=2087):
+def run(server_class=HTTPServer, handler_class=S, port=8080):
     server_address = ('', port)
     httpd = server_class(server_address, handler_class)
     # certs provided by cloudflare:
-    httpd.socket = ssl.wrap_socket (httpd.socket,
-        keyfile="/home/pi/letsencrypt/live/sobr.co/privkey.pem",
-        certfile='/home/pi/letsencrypt/live/sobr.co/fullchain.pem', server_side=True)
+    # httpd.socket = ssl.wrap_socket (httpd.socket,
+    #     keyfile="/home/pi/letsencrypt/live/sobr.co/privkey.pem",
+    #     certfile='/home/pi/letsencrypt/live/sobr.co/fullchain.pem', server_side=True)
     logger.info('Starting httpd...\n')
     try:
         httpd.serve_forever()
